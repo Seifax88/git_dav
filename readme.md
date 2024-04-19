@@ -1,1 +1,1 @@
-todo lo que hago aqui lo copio de GPT
+todo lo que hago aqui lo copio de GPT, mentira
