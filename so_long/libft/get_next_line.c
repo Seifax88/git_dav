@@ -6,11 +6,11 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 13:24:26 by dgargant          #+#    #+#             */
-/*   Updated: 2024/04/22 12:34:04 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/04/26 09:27:12 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../libft.h"
 
 static char	*ft_read_and_fill(int fd, char *buffer, char *backup)
 {
@@ -84,31 +84,3 @@ char	*get_next_line(int fd)
 	backup = ft_set_line(line);
 	return (line);
 }
-
-/*#include <fcntl.h>
-#include <stdio.h>
-
-int main()
-{
-	int	fd;
-	char	*line;
-	int	l;
-
-	fd = open("hola.txt", O_RDONLY);
-	if (fd == -1)
-		return (0);
-	l = 1;
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (!line)
-		{
-			printf("\nFin de fichero\n");
-			break;
-		}
-		printf("[%d]: %s", l, line);
-		l++;
-	}
-	close(fd);
-	return (0);
-}*/

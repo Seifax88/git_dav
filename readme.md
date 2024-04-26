@@ -1,1 +1,1 @@
-todo lo que hago aqui lo copio de GPT, mentira
+Backup de mi paso por el cursus
