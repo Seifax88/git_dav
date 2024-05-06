@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:09:52 by dgargant          #+#    #+#             */
-/*   Updated: 2024/04/26 12:41:28 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/05/06 10:37:44 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include <fcntl.h>
+# include <stdio.h>
 
 typedef struct s_map
 {
@@ -28,16 +29,18 @@ typedef struct s_game
 	t_map	*map;
 }	t_game;
 
-void	check_map_extension(int fd, char **argv);
+void	check_map_extension(char **argv);
 
 int	length_map(int fd);
 
-int	height_map(int fd, int x);
+int	height_map(int fd);
 
 void	fill_map(int fd, t_game *game);
 
 void	create_map(t_game *game, char **argv);
 
-void	print_map(t_map *map, int lines);
+void	print_map(t_game *game);
+
+int	main(int argc, char **argv);
 
 #endif
