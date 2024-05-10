@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:11:40 by dgargant          #+#    #+#             */
-/*   Updated: 2024/05/06 12:01:47 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/05/07 14:12:08 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,12 @@ void	fill_map(int fd, t_game *game)
 }
 
 
-/*void	print_map(t_game *game)
+void	print_map(t_game *game)
 {
 	printf(" \nMAPA\n");
 	for (int i = 0; game->map->map[i] != NULL; i++)
 		printf("%d %s", i,game->map->map[i]);
-}*/
+}
 
 //call functions
 void	create_map(t_game *game, char **argv)
@@ -81,7 +81,10 @@ void	create_map(t_game *game, char **argv)
 		exit(1);
 	check_map_extension(argv);
 	game->w_lines = (height_map(fd));
+	close(fd);
+	fd =  0;
 	fd = open(argv[1], O_RDONLY); 
 	fill_map(fd, game);
-	//print_map(game);
+	game->w_length = (int)ft_strlen(game->map->map[0]);
+	print_map(game);
 }
