@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:11:40 by dgargant          #+#    #+#             */
-/*   Updated: 2024/05/07 14:12:08 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:46:13 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	height_map(int fd)
  		line = NULL;
  		linecount++;
  	}
- 	return (linecount);
+ 	return (linecount - 1);
  }
  
  
@@ -47,7 +47,7 @@ void	fill_map(int fd, t_game *game)
 	int		i;
 
 	i = 0;
-	game->map->map = malloc(game->w_lines * sizeof(char *));
+	game->map->map = malloc((game->w_lines + 2) * sizeof(char *));
 	while(1)
 	{
 		game->map->map[i] = get_next_line(fd);
@@ -85,6 +85,7 @@ void	create_map(t_game *game, char **argv)
 	fd =  0;
 	fd = open(argv[1], O_RDONLY); 
 	fill_map(fd, game);
-	game->w_length = (int)ft_strlen(game->map->map[0]);
+	game->w_length = (int)strlen_no_tab(game->map->map[0]);
 	print_map(game);
+	printf(" \n lineas: %d \n Columnas: %d\n", game->w_lines, game->w_length);
 }

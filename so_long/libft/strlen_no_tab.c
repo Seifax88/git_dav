@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   strlen_no_tab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 09:10:24 by dgargant          #+#    #+#             */
-/*   Updated: 2024/05/16 14:53:07 by dgargant         ###   ########.fr       */
+/*   Created: 2024/05/14 11:15:19 by dgargant          #+#    #+#             */
+/*   Updated: 2024/05/15 09:48:03 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
+size_t	strlen_no_tab(const char *s)
 {
-	t_game	game;
+	size_t	len;
 
-	if (argc < 1)
-		return(0);
-	create_map(&game, argv);
-	parsing_init(&game);
-	init_game(&game);
-	printf("Adios");
-	return (0);
+	len = 0;
+	if (!s)
+		return (0);
+	while (*s != '\0' && *s != '\n')
+	{
+		++len;
+		s = s + 1;
+	}
+	return (len);
 }

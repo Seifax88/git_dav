@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 12:50:21 by dgargant          #+#    #+#             */
-/*   Updated: 2024/05/10 11:29:16 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/05/14 12:39:48 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void    check_map_empty(t_game *game)
         {
             if (game->map->map[y][x] != '1' && game->map->map[y][x] != '0'
                 && game->map->map[y][x] != 'E' && game->map->map[y][x] != 'P'
-                && game->map->map[y][x] != 'c')
+                && game->map->map[y][x] != 'C')
                 print_map_error("\n ERROR, EMPTY OR NOT VALID MAP \n");
 				x++;
         }
@@ -44,7 +44,7 @@ void    check_map_borders(t_game *game)
     y = 0;
     while (y < game->w_lines)
     {
-        if ((int)ft_strlen(game->map->map[y]) != game->w_length)
+        if (((int)strlen_no_tab(game->map->map[y])) != game->w_length)
             print_map_error("\n ERROR, MAP NOT RECTANGULAR \n");
         x = 0;
         while (x < game->w_length)
@@ -75,7 +75,7 @@ void    check_map_content(t_game *game)
     {
         player += count_letters(game->map->map[y], 'P');
         exit += count_letters(game->map->map[y], 'E');
-        game += count_letters(game->map->map[y], 'C');
+        game->map->items += count_letters(game->map->map[y], 'C');
         y++;
     }
     if (player != 1)
@@ -87,7 +87,6 @@ void    check_map_content(t_game *game)
 }
 
 //check it has resolution (flood_fill)
-    //find the position of player
 void	fl_fill(char **map, int y, int x)
 {
 	map[y][x] = 'P'; 
@@ -105,6 +104,8 @@ void	fl_fill(char **map, int y, int x)
 		fl_fill(map, y - 1, x);	
 }
 
+    //find the position of player
+        //with count_leters check in map if 'C' != 0 or 'E'
 void	flood_fill(char **map)
 {
 	int	y;
@@ -120,8 +121,16 @@ void	flood_fill(char **map)
                 break;
             x++;
         }
+		if (map[y][x] == 'P')
+                break;
         y++;
 	}
     fl_fill(map, y, x);
-    //with count_leters check in map if 'C' != 0 or 'E' != 0
+    y = 0;
+    while (map && map[y])
+    {
+        if ((count_letters(map[y], 'E') == 1) || (count_letters(map[y], 'C') == 1))
+            print_map_error("ERROR, WRONG MAP");
+        y++;
+    }
 }

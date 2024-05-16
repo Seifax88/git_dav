@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:47:49 by dgargant          #+#    #+#             */
-/*   Updated: 2024/05/09 09:30:03 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:48:00 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,15 @@ int	count_letters(char *str, char c)
 		return(-1);
 	while(str && str[i])
 	{
-		if (str[i++] == c)
-		num_letters++;
+		if (str[i] == c)
+			num_letters++;
+		i++;
 	}
 	return (num_letters);
 }
 
 
-static void	*ft_empty_line(char **lines, int n)
+void	*ft_empty_line(char **lines, int n)
 {
 	int	i;
 
@@ -59,8 +60,8 @@ char	**map_dup(t_game *game)
 	char	**copy;
 
 	y = 0;
-	copy = malloc(game->w_lines * sizeof(char *));
-	while (y <= game->w_lines)
+	copy = malloc((game->w_lines) * sizeof(char *));
+	while (y <= (game->w_lines))
 	{
 		if (game->map->map[y] == NULL)
 		{

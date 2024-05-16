@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:09:53 by dgargant          #+#    #+#             */
-/*   Updated: 2024/04/26 09:17:35 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:08:51 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 size_t	ft_strlen(const char *s);
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+
+size_t	strlen_no_tab(const char *s);
 
 //get_next_line functions
 # ifndef BUFFER_SIZE
