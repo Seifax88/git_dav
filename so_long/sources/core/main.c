@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:10:24 by dgargant          #+#    #+#             */
-/*   Updated: 2024/05/16 14:53:07 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/05/17 11:42:42 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int main(int argc, char **argv)
 	create_map(&game, argv);
 	parsing_init(&game);
 	init_game(&game);
-	printf("Adios");
+	//printf("Adios");
 	return (0);
 }

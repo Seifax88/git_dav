@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:09:53 by dgargant          #+#    #+#             */
-/*   Updated: 2024/05/16 12:08:51 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/05/28 12:59:23 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ char	*ft_strdup(const char *s1);
 char	*ft_strjoin(const char *s1, const char *s2);
 
 char	*ft_substr(const char *s, unsigned int start, size_t len);
+
+int	ft_strncmp(char *s1, char *s2, size_t n);
 
 #endif

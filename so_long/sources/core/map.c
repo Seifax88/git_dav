@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:11:40 by dgargant          #+#    #+#             */
-/*   Updated: 2024/05/16 12:46:13 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/05/28 12:58:54 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	check_map_extension(char **argv)
 {
-	if (ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])) == NULL)
+	if (ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4], ".ber", 4))
 	{
 		printf("Error. Invalid map_path");
 		exit(1);
@@ -37,9 +37,8 @@ int	height_map(int fd)
  		line = NULL;
  		linecount++;
  	}
- 	return (linecount - 1);
+ 	return (linecount);
  }
- 
  
 //map in s_game
 void	fill_map(int fd, t_game *game)
@@ -47,12 +46,14 @@ void	fill_map(int fd, t_game *game)
 	int		i;
 
 	i = 0;
-	game->map->map = malloc((game->w_lines + 2) * sizeof(char *));
+	game->map->map = malloc((game->w_lines) * sizeof(char *));
 	while(1)
 	{
 		game->map->map[i] = get_next_line(fd);
 		if (game->map->map[i] == NULL)
+		{
 			break ;
+		}
 		i++;
 	}
 }
@@ -72,9 +73,8 @@ void	create_map(t_game *game, char **argv)
 	t_map *map;
 
     map = malloc(sizeof(t_map));
-    if (!map) {
+    if (!map) 
         exit(1);
-    }
     game->map = map;
 	fd = open(argv[1], O_RDONLY);
 	if(fd < 0)

@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 12:50:21 by dgargant          #+#    #+#             */
-/*   Updated: 2024/05/14 12:39:48 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/05/29 10:07:45 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void    check_map_empty(t_game *game)
     int y;
 
     y = 0;
-    while (y < game->w_lines)
+    while (y < (game->w_lines - 2))
     {
         x = 0;
         while (x < game->w_length)
@@ -27,7 +27,7 @@ void    check_map_empty(t_game *game)
             if (game->map->map[y][x] != '1' && game->map->map[y][x] != '0'
                 && game->map->map[y][x] != 'E' && game->map->map[y][x] != 'P'
                 && game->map->map[y][x] != 'C')
-                print_map_error("\n ERROR, EMPTY OR NOT VALID MAP \n");
+                    print_map_error("\n ERROR, EMPTY OR NOT VALID MAP \n");
 				x++;
         }
 		y++;
@@ -42,7 +42,7 @@ void    check_map_borders(t_game *game)
     int y;
 
     y = 0;
-    while (y < game->w_lines)
+    while (y < (game->w_lines - 1))
     {
         if (((int)strlen_no_tab(game->map->map[y])) != game->w_length)
             print_map_error("\n ERROR, MAP NOT RECTANGULAR \n");
@@ -93,13 +93,13 @@ void	fl_fill(char **map, int y, int x)
 	if (map[y][x + 1] == '0' || map[y][x + 1] == 'C'
 		|| map[y][x + 1] == 'E')
 		fl_fill(map, y, x + 1);
-	if (map[y][x - 1] == '0' || map[y][x - 1] == 'c'
+	if (map[y][x - 1] == '0' || map[y][x - 1] == 'C'
 		|| map[y][x - 1] == 'E')
 		fl_fill(map, y, x - 1);
 	if (map[y + 1][x] == '0' || map[y + 1][x] == 'C'
 		|| map[y + 1][x] == 'E')
 		fl_fill(map, y + 1, x);
-	if (map[y - 1][x] == '0' || map[y - 1][x] == 'c'
+	if (map[y - 1][x] == '0' || map[y - 1][x] == 'C'
 		|| map[y - 1][x] == 'E')
 		fl_fill(map, y - 1, x);	
 }

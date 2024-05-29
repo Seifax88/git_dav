@@ -4,8 +4,9 @@ CC	= gcc
 
 HEADERS:= -I ./includes 
 
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3 $(HEADERS) 
-# CFLAGS = -Wall -Werror -Wextra $(HEADERS) 
+#CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3 $(HEADERS)
+CFLAGS = -Wall -Werror -Wextra -g3 $(HEADERS) 
+#CFLAGS = -Wall -Werror -Wextra $(HEADERS) 
 
 MLX_FLAGS = -lXext -lX11 -lm -lbsd
 
@@ -29,7 +30,7 @@ SRCS :=	 $(addprefix sources/, \
 	parsing/parsing_map.c	parsing/parsing_utils.c parsing/parsing_init.c)
 
 SRCS_LIB := $(addprefix ./libft/, \
-	ft_strnstr.c	get_next_line_utils.c	get_next_line.c	strlen_no_tab.c)
+	ft_strnstr.c	get_next_line_utils.c	get_next_line.c	strlen_no_tab.c	ft_strncmp.c)
 
 OBJS = $(SRCS:.c=.o) $(SRCS_LIB:.c=.o)
 

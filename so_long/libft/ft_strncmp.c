@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 16:12:05 by dgargant          #+#    #+#             */
-/*   Updated: 2024/05/17 12:18:50 by dgargant         ###   ########.fr       */
+/*   Created: 2024/01/09 10:51:49 by dgargant          #+#    #+#             */
+/*   Updated: 2024/02/19 12:22:47 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_strncmp(char *s1, char *s2, size_t n)
 {
-	write(fd, &c, 1);
-}
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-/*
-#include <fcntl.h>
-int	main()
-{
-	char c = 'D';
-	int	fd;
-
-	fd = open("test.txt", O_WRONLY | O_CREAT, 0644);
-	if (fd == -1)
-		return (0);
-	else
+	str1 = (unsigned char *) s1;
+	str2 = (unsigned char *) s2;
+	i = 0;
+	while ((str1[i] != '\0' || str2[i] != '\0') && (n > i))
 	{
-		ft_putchar_fd(c, fd);
-		close(fd);
+		if (str1[i] == str2[i])
+			i++;
+		else
+			return (str1[i] - str2[i]);
 	}
 	return (0);
-}*/
+}
