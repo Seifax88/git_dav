@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:09:52 by dgargant          #+#    #+#             */
-/*   Updated: 2024/05/29 09:12:49 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/05/30 12:32:58 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 # include "../mlx_linux/mlx_int.h"
 # include "../mlx_linux/mlx.h"
 
+# ifndef keys
+#  define KEY_ESC	65307
+#  define KEY_DOWN	65364
+#  define KEY_LEFT	65361
+#  define KEY_RIGHT	65363
+#  define KEY_UP	65362
+# endif
+
 typedef struct s_map
 {
 	int		items;
@@ -30,6 +38,8 @@ typedef struct s_sprite
 	void	*player;
 	void	*background;
 	void	*bush;
+	void	*house;
+	void	*egg;
 }	t_sprite;
 
 
@@ -77,6 +87,12 @@ void	parsing_init(t_game *game);
 
 void	init_game(t_game *game);
 
+void	init_imgs(t_sprite *sprite, t_game *game);
+
 void	init_background(t_sprite *sprite, t_game *game);
+
+int destroy_win(int keycode, t_game *game);
+
+int	test_hook(int keycode, t_game *game);
 
 #endif
