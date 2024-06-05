@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:09:52 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/05 10:06:14 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:44:29 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_sprite
 	void	*bush;
 	void	*house;
 	void	*egg;
+	void	*chiken;
 }	t_sprite;
 
 
@@ -103,9 +104,11 @@ void	init_imgs(t_sprite *sprite, t_game *game);
 
 void	init_background(t_sprite *sprite, t_game *game);
 
+void	put_imgs(t_game *game, t_sprite *sprite, char c, int y, int x);
+
 int key_pres_hook(int keycode, t_game *game);
 
-int	destroy_win_x(int keycode, t_game *game);
+int	destroy_win_x(t_game *game);
 
 void	find_player_position(t_game *game);
 
@@ -118,5 +121,7 @@ void	set_y_pos(t_game *game, int n);
 void	set_x_pos(t_game *game, int n);
 
 void	check_exit(t_game *game, char c);
+
+void	destroy_all(t_game *game);
 
 #endif

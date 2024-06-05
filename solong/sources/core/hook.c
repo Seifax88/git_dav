@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 11:12:30 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/05 10:09:51 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:11:14 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,20 @@
 
 int key_pres_hook(int keycode, t_game *game)
 {
-
 	set_mv_player(keycode, game);
 	if (keycode == KEY_ESC)
 	{
-		mlx_destroy_window(game->mlx, game->window);	
-		exit(0);
+		destroy_all(game);
+		exit(1);
 	}
-	printf(" \n %d, %d", game->player.y_pos,game->player.x_pos);
-	printf("\n %d", game->player.steps);
-	//mlx_clear_window(game->mlx, game->window);
 	init_background(&game->sprite, game);
-	//printf("\nnumero de pasos: %d numero de puntos: %d", game->player.steps, game->player.points);
 	return (0);
 }
 
-int destroy_win_x(int keycode, t_game *game)
+int destroy_win_x(t_game *game)
 {
-	(void)game;
-	printf("%d\n", keycode);
-	exit(0);
+	destroy_all(game);
+	exit(1);
 	return (0);
 }
 

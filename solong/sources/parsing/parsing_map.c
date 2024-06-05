@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 12:50:21 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/03 11:17:38 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:53:19 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void    check_map_empty(t_game *game)
         {
             if (game->map->map[y][x] != '1' && game->map->map[y][x] != '0'
                 && game->map->map[y][x] != 'E' && game->map->map[y][x] != 'P'
-                && game->map->map[y][x] != 'C')
+                && game->map->map[y][x] != 'C' && game->map->map[y][x] != 'N')
                     print_map_error("\n ERROR, EMPTY OR NOT VALID MAP \n");
 				x++;
         }
@@ -90,17 +90,13 @@ void    check_map_content(t_game *game)
 void	fl_fill(char **map, int y, int x)
 {
 	map[y][x] = 'P'; 
-	if (map[y][x + 1] == '0' || map[y][x + 1] == 'C'
-		|| map[y][x + 1] == 'E')
+	if (map[y][x + 1] == '0' || map[y][x + 1] == 'C')
 		fl_fill(map, y, x + 1);
-	if (map[y][x - 1] == '0' || map[y][x - 1] == 'C'
-		|| map[y][x - 1] == 'E')
+	if (map[y][x - 1] == '0' || map[y][x - 1] == 'C')
 		fl_fill(map, y, x - 1);
-	if (map[y + 1][x] == '0' || map[y + 1][x] == 'C'
-		|| map[y + 1][x] == 'E')
+	if (map[y + 1][x] == '0' || map[y + 1][x] == 'C')
 		fl_fill(map, y + 1, x);
-	if (map[y - 1][x] == '0' || map[y - 1][x] == 'C'
-		|| map[y - 1][x] == 'E')
+	if (map[y - 1][x] == '0' || map[y - 1][x] == 'C')
 		fl_fill(map, y - 1, x);	
 }
 

@@ -4,8 +4,9 @@ CC	= gcc
 
 HEADERS:= -I ./includes 
 
-#CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3 $(HEADERS)
-CFLAGS = -Wall -Werror -Wextra -g3 $(HEADERS) 
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3 $(HEADERS)
+#CFLAGS = -Wall -Werror -Wextra -g3 $(HEADERS)
+#valgrind --leak-check=full --show-leak-kinds=all
 #CFLAGS = -Wall -Werror -Wextra $(HEADERS) 
 
 MLX_FLAGS = -lXext -lX11 -lm -lbsd
@@ -26,7 +27,7 @@ YELLOW =		\033[0;93m
 RESET=			\033[0m
 
 SRCS :=	 $(addprefix sources/, \
-	core/main.c	core/map.c	core/init.c	core/hook.c	core/movement.c\
+	core/main.c	core/map.c	core/init.c	core/hook.c	core/movement.c	core/utils.c\
 	parsing/parsing_map.c	parsing/parsing_utils.c parsing/parsing_init.c)
 
 SRCS_LIB := $(addprefix ./libft/, \

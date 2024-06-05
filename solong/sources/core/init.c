@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 09:04:56 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/05 10:12:46 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:44:10 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,23 @@ void	init_imgs(t_sprite *sprite, t_game *game)
 	sprite->bush = mlx_xpm_file_to_image(game->mlx, "./assets/Bush.xpm", &x, &y);
 	sprite->house = mlx_xpm_file_to_image(game->mlx, "./assets/House.xpm", &x, &y);
 	sprite->egg = mlx_xpm_file_to_image(game->mlx, "./assets/Egg1.xpm", &x, &y);
+	sprite->chiken = mlx_xpm_file_to_image(game->mlx, "./assets/Chiken1.xpm", &x,&y);
+}
+
+void	put_imgs(t_game *game, t_sprite *sprite, char c, int y, int x)
+{
+	if (c == '0')
+		mlx_put_image_to_window(game->mlx, game->window, sprite->background, x * 64, y * 64);
+	if (c == '1')
+		mlx_put_image_to_window(game->mlx, game->window, sprite->bush, x * 64, y * 64);
+	if (c == 'P')
+		mlx_put_image_to_window(game->mlx, game->window, sprite->cat, x * 64, y * 64);
+	if (c == 'E')
+		mlx_put_image_to_window(game->mlx, game->window, sprite->house, x * 64, y * 64);
+	if (c == 'C')
+		mlx_put_image_to_window(game->mlx, game->window, sprite->egg, x * 64, y * 64);
+	if (c == 'N')
+		mlx_put_image_to_window(game->mlx, game->window, sprite->chiken, x * 64, y * 64);
 }
 
 void	init_background(t_sprite *sprite, t_game *game)
@@ -37,7 +54,8 @@ void	init_background(t_sprite *sprite, t_game *game)
 		while (x < game->w_length)
 		{
 			c = game->map->map[y][x];
-			if (c == '0')
+			put_imgs(game, sprite, c, y, x);
+			/*if (c == '0')
 				mlx_put_image_to_window(game->mlx, game->window, sprite->background, x * 64, y * 64);
 			if (c == '1')
 				mlx_put_image_to_window(game->mlx, game->window, sprite->bush, x * 64, y * 64);
@@ -47,13 +65,13 @@ void	init_background(t_sprite *sprite, t_game *game)
 				mlx_put_image_to_window(game->mlx, game->window, sprite->house, x * 64, y * 64);
 			if (c == 'C')
 				mlx_put_image_to_window(game->mlx, game->window, sprite->egg, x * 64, y * 64);
+			if (c == 'N')
+				mlx_put_image_to_window(game->mlx, game->window, sprite->chiken, x * 64, y * 64);*/
 			x++;
 		}
 		y++;
 	}
 }
-
-
 
 void	init_game(t_game *game)
 {
@@ -66,15 +84,18 @@ void	init_game(t_game *game)
 	if (x < (game->w_length * 64) || y < (game->w_lines * 64))
 	{
 		printf("Resolution error, %d x %d", (game->w_length * 64), (game->w_lines * 64));
+		mlx_loop_end(game->mlx);
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
 		exit(0);
 	}
 	game->window = mlx_new_window(game->mlx, (game->w_length * 64), ((game->w_lines - 1) * 64), "So_Long");
-	printf("Aqui\n");
 	init_imgs(&game->sprite, game);
 	init_background(&game->sprite, game);
 	game->player.steps = 0;
 	game->player.points = 0;
+	printf("\nSteps: %d points: %d", game->player.steps, game->player.points);
+	mlx_hook(game->window, 17, 0, destroy_win_x, game);
 	mlx_hook(game->window, 2, 1L >> 0, key_pres_hook, game);
-	mlx_hook(game->window, 17, 1L >> 0, destroy_win_x, game);
 	mlx_loop(game->mlx);
 }
