@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:09:52 by dgargant          #+#    #+#             */
-/*   Updated: 2024/05/30 12:32:58 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/05 10:06:14 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@
 #  define KEY_UP	65362
 # endif
 
+typedef struct s_player 
+{
+	int	points;
+	int	steps;
+	int	y_pos;
+	int	x_pos;
+}	t_player;
+
+
 typedef struct s_map
 {
 	int		items;
@@ -35,7 +44,7 @@ typedef struct s_map
 
 typedef struct s_sprite
 {
-	void	*player;
+	void	*cat;
 	void	*background;
 	void	*bush;
 	void	*house;
@@ -51,6 +60,7 @@ typedef struct s_game
 	void	*window;
 	t_map	*map;
 	t_sprite	sprite;
+	t_player	player;
 }	t_game;
 
 int	main(int argc, char **argv);
@@ -64,6 +74,8 @@ void	fill_map(int fd, t_game *game);
 void	create_map(t_game *game, char **argv);
 
 void	print_map(t_game *game);
+
+void	count_items(t_game *game);
 
 void	check_map_empty(t_game *game);
 
@@ -91,8 +103,20 @@ void	init_imgs(t_sprite *sprite, t_game *game);
 
 void	init_background(t_sprite *sprite, t_game *game);
 
-int destroy_win(int keycode, t_game *game);
+int key_pres_hook(int keycode, t_game *game);
 
-int	test_hook(int keycode, t_game *game);
+int	destroy_win_x(int keycode, t_game *game);
+
+void	find_player_position(t_game *game);
+
+int	player_movement(t_game *game, int x, int y);
+
+void	set_mv_player(int keycode, t_game *game);
+
+void	set_y_pos(t_game *game, int n);
+
+void	set_x_pos(t_game *game, int n);
+
+void	check_exit(t_game *game, char c);
 
 #endif

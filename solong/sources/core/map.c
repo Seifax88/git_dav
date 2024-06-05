@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:11:40 by dgargant          #+#    #+#             */
-/*   Updated: 2024/05/28 12:58:54 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/05 10:05:44 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,30 @@ void	print_map(t_game *game)
 		printf("%d %s", i,game->map->map[i]);
 }
 
+void	count_items(t_game *game)
+{
+	int		y;
+	int		x;
+	char	c;
+	
+	y = 0;
+	game->map->items = 0;
+	while (game->map->map[y] != NULL)
+	{
+		x = 0;
+		while (x < game->w_length)
+		{
+			c = game->map->map[y][x];
+			if (c == 'C')
+				{
+					game->map->items += 1 ;
+				}
+			x++;
+		}
+		y++;
+	}
+}
+
 //call functions
 void	create_map(t_game *game, char **argv)
 {
@@ -86,6 +110,7 @@ void	create_map(t_game *game, char **argv)
 	fd = open(argv[1], O_RDONLY); 
 	fill_map(fd, game);
 	game->w_length = (int)strlen_no_tab(game->map->map[0]);
+	count_items(game);
 	print_map(game);
 	printf(" \n lineas: %d \n Columnas: %d\n", game->w_lines, game->w_length);
 }

@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 12:50:21 by dgargant          #+#    #+#             */
-/*   Updated: 2024/05/29 10:07:45 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/03 11:17:38 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void    check_map_borders(t_game *game)
         while (x < game->w_length)
         {
             if ((y == 0 || x == 0) && (game->map->map[y][x] != '1'))
-                print_map_error("\n ERROR, MAP NOT SURROUNDED BY BALLS \n");
+                print_map_error("\n ERROR, MAP NOT SURROUNDED BY WALLS \n");
             else if ((y == game->w_lines || x == game->w_length)  &&
                 game->map->map[y][x] != '1')
-                print_map_error("\n ERROR, MAP NOT SURROUNDED BY BALLS \n");
+                print_map_error("\n ERROR, MAP NOT SURROUNDED BY WALLS \n");
 				x++;
         }
 		y++;

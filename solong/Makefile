@@ -26,7 +26,7 @@ YELLOW =		\033[0;93m
 RESET=			\033[0m
 
 SRCS :=	 $(addprefix sources/, \
-	core/main.c	core/map.c	core/init.c	\
+	core/main.c	core/map.c	core/init.c	core/hook.c	core/movement.c\
 	parsing/parsing_map.c	parsing/parsing_utils.c parsing/parsing_init.c)
 
 SRCS_LIB := $(addprefix ./libft/, \

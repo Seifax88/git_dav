@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 09:04:56 by dgargant          #+#    #+#             */
-/*   Updated: 2024/05/31 10:32:53 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/05 10:12:46 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_imgs(t_sprite *sprite, t_game *game)
 	int x;
 	int y;
 	
-	sprite->player = mlx_xpm_file_to_image(game->mlx, "./assets/Cat1.xpm", &x, &y);
+	sprite->cat = mlx_xpm_file_to_image(game->mlx, "./assets/Cat1.xpm", &x, &y);
 	sprite->background = mlx_xpm_file_to_image(game->mlx, "./assets/Grass.xpm", &x, &y);
 	sprite->bush = mlx_xpm_file_to_image(game->mlx, "./assets/Bush.xpm", &x, &y);
 	sprite->house = mlx_xpm_file_to_image(game->mlx, "./assets/House.xpm", &x, &y);
@@ -42,7 +42,7 @@ void	init_background(t_sprite *sprite, t_game *game)
 			if (c == '1')
 				mlx_put_image_to_window(game->mlx, game->window, sprite->bush, x * 64, y * 64);
 			if (c == 'P')
-				mlx_put_image_to_window(game->mlx, game->window, sprite->player, x * 64, y * 64);
+				mlx_put_image_to_window(game->mlx, game->window, sprite->cat, x * 64, y * 64);
 			if (c == 'E')
 				mlx_put_image_to_window(game->mlx, game->window, sprite->house, x * 64, y * 64);
 			if (c == 'C')
@@ -53,24 +53,7 @@ void	init_background(t_sprite *sprite, t_game *game)
 	}
 }
 
-int destroy_win(int keycode, t_game *game)
-{
-	if (keycode == KEY_ESC)
-	{
-		printf("hola");
-		mlx_destroy_window(game->mlx, game->window);	
-	}
-	return (0);
-}
 
-int test_hook(int keycode, t_game *game)
-{
-	(void)game;
-	//printf("Código = ");
-	printf("%d\n", keycode);
-	exit(0);
-	return (0);
-}
 
 void	init_game(t_game *game)
 {
@@ -89,9 +72,9 @@ void	init_game(t_game *game)
 	printf("Aqui\n");
 	init_imgs(&game->sprite, game);
 	init_background(&game->sprite, game);
-	mlx_hook(game->window, 2, 1L >> 0, destroy_win, game);
-	mlx_hook(game->window, 17, 1L >> 0, test_hook, game);
+	game->player.steps = 0;
+	game->player.points = 0;
+	mlx_hook(game->window, 2, 1L >> 0, key_pres_hook, game);
+	mlx_hook(game->window, 17, 1L >> 0, destroy_win_x, game);
 	mlx_loop(game->mlx);
-	//mlx_destroy_display(game->mlx);
-    //free(game->mlx);
 }
