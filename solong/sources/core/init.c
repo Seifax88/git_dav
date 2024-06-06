@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 09:04:56 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/05 15:44:10 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/06 12:46:01 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ void	init_imgs(t_sprite *sprite, t_game *game)
 	sprite->chiken = mlx_xpm_file_to_image(game->mlx, "./assets/Chiken1.xpm", &x,&y);
 }
 
-void	put_imgs(t_game *game, t_sprite *sprite, char c, int y, int x)
+void	put_imgs(t_game *game, t_sprite *sprite, int y, int x)
 {
+	char	c;
+	
+	c = game->map->map[y][x];
 	if (c == '0')
 		mlx_put_image_to_window(game->mlx, game->window, sprite->background, x * 64, y * 64);
 	if (c == '1')
@@ -45,7 +48,6 @@ void	init_background(t_sprite *sprite, t_game *game)
 {
 	int		y;
 	int		x;
-	char	c;
 	
 	y = 0;
 	while (game->map->map[y] != NULL)
@@ -53,20 +55,7 @@ void	init_background(t_sprite *sprite, t_game *game)
 		x = 0;
 		while (x < game->w_length)
 		{
-			c = game->map->map[y][x];
-			put_imgs(game, sprite, c, y, x);
-			/*if (c == '0')
-				mlx_put_image_to_window(game->mlx, game->window, sprite->background, x * 64, y * 64);
-			if (c == '1')
-				mlx_put_image_to_window(game->mlx, game->window, sprite->bush, x * 64, y * 64);
-			if (c == 'P')
-				mlx_put_image_to_window(game->mlx, game->window, sprite->cat, x * 64, y * 64);
-			if (c == 'E')
-				mlx_put_image_to_window(game->mlx, game->window, sprite->house, x * 64, y * 64);
-			if (c == 'C')
-				mlx_put_image_to_window(game->mlx, game->window, sprite->egg, x * 64, y * 64);
-			if (c == 'N')
-				mlx_put_image_to_window(game->mlx, game->window, sprite->chiken, x * 64, y * 64);*/
+			put_imgs(game, sprite, y, x);
 			x++;
 		}
 		y++;
@@ -91,6 +80,7 @@ void	init_game(t_game *game)
 	}
 	game->window = mlx_new_window(game->mlx, (game->w_length * 64), ((game->w_lines - 1) * 64), "So_Long");
 	init_imgs(&game->sprite, game);
+	find_exit_position(game);
 	init_background(&game->sprite, game);
 	game->player.steps = 0;
 	game->player.points = 0;

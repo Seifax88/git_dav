@@ -6,11 +6,37 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:06:25 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/05 15:46:38 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/06 12:15:03 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
+
+
+void	find_exit_position(t_game *game)
+{
+	int		y;
+	int		x;
+	char	c;
+	
+	y = 0;
+	while (game->map->map[y] != NULL)
+	{
+		x = 0;
+		while (x < game->w_length)
+		{
+			c = game->map->map[y][x];
+			if (c == 'E')
+				{
+					game->map->y_exit = y;
+					game->map->x_exit = x;
+					game->map->map[y][x] = '0';
+				}
+			x++;
+		}
+		y++;
+	}
+}
 
 void	find_player_position(t_game *game)
 {

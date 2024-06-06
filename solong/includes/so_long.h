@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:09:52 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/05 15:44:29 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/06 12:46:12 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct s_player
 
 typedef struct s_map
 {
+	int		y_exit;
+	int		x_exit;
 	int		items;
 	char	**map;
 }	t_map;
@@ -104,11 +106,13 @@ void	init_imgs(t_sprite *sprite, t_game *game);
 
 void	init_background(t_sprite *sprite, t_game *game);
 
-void	put_imgs(t_game *game, t_sprite *sprite, char c, int y, int x);
+void	put_imgs(t_game *game, t_sprite *sprite, int y, int x);
 
 int key_pres_hook(int keycode, t_game *game);
 
 int	destroy_win_x(t_game *game);
+
+void	find_exit_position(t_game *game);
 
 void	find_player_position(t_game *game);
 
