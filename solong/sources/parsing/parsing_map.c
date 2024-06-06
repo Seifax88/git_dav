@@ -90,13 +90,17 @@ void    check_map_content(t_game *game)
 void	fl_fill(char **map, int y, int x)
 {
 	map[y][x] = 'P'; 
-	if (map[y][x + 1] == '0' || map[y][x + 1] == 'C')
+	if (map[y][x + 1] == '0' || map[y][x + 1] == 'C'
+        || map[y][x + 1] == 'E')
 		fl_fill(map, y, x + 1);
-	if (map[y][x - 1] == '0' || map[y][x - 1] == 'C')
+	if (map[y][x - 1] == '0' || map[y][x - 1] == 'C'
+        || map[y][x - 1] == 'E')
 		fl_fill(map, y, x - 1);
-	if (map[y + 1][x] == '0' || map[y + 1][x] == 'C')
+	if (map[y + 1][x] == '0' || map[y + 1][x] == 'C'
+        || map[y + 1][x] == 'E')
 		fl_fill(map, y + 1, x);
-	if (map[y - 1][x] == '0' || map[y - 1][x] == 'C')
+	if (map[y - 1][x] == '0' || map[y - 1][x] == 'C'
+        || map[y - 1][x] == 'E')
 		fl_fill(map, y - 1, x);	
 }
 
