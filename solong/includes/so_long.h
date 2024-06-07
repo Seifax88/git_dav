@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:09:52 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/06 12:46:12 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/06 12:54:52 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ void	parsing_init(t_game *game);
 void	init_game(t_game *game);
 
 void	init_imgs(t_sprite *sprite, t_game *game);
+
+void	error_create_img(t_sprite *sprite, t_game *game);
 
 void	init_background(t_sprite *sprite, t_game *game);
 

@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 09:04:56 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/06 12:46:01 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/07 08:49:59 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,20 @@ void	init_imgs(t_sprite *sprite, t_game *game)
 	sprite->house = mlx_xpm_file_to_image(game->mlx, "./assets/House.xpm", &x, &y);
 	sprite->egg = mlx_xpm_file_to_image(game->mlx, "./assets/Egg1.xpm", &x, &y);
 	sprite->chiken = mlx_xpm_file_to_image(game->mlx, "./assets/Chiken1.xpm", &x,&y);
+	error_create_img(&game->sprite, game);
 }
+
+void	error_create_img(t_sprite *sprite, t_game *game)
+{
+	if (sprite->egg == NULL || sprite->background == NULL
+		|| sprite->bush == NULL || sprite->cat == NULL
+		|| sprite->chiken == NULL || sprite->house == NULL)
+	{
+		print_map_error("Error loading images");
+		destroy_all(game);
+	}
+}
+
 
 void	put_imgs(t_game *game, t_sprite *sprite, int y, int x)
 {
