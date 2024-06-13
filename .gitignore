@@ -3,5 +3,5 @@
 .DS_Store
 *.out
 *.txt
-maps/*.ber
+maps/.ber
 so_long
