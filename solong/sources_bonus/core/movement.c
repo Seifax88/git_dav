@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 09:40:34 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/13 10:28:26 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/13 11:04:42 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	check_exit(t_game *game, char c)
 	{
 		game->player.steps += 1;
 		ft_printf("\nSteps: %d\n", game->player.steps);
+		win_message();
 		destroy_all(game);
 		exit(1);
 		//deploy_message(1, game);
@@ -30,6 +31,7 @@ void	check_enemy(t_game *game,char c)
 	{
 		game->player.steps += 1;
 		ft_printf("\nSteps: %d\n", game->player.steps);
+		lose_message();
 		destroy_all(game);
 		exit(1);
 	}

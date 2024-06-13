@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:09:52 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/12 14:43:08 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/13 11:12:33 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include "libft.h"
+# include "ft_printf.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include "../mlx_linux/mlx_int.h"
@@ -26,6 +27,10 @@
 #  define KEY_RIGHT	65363
 #  define KEY_UP	65362
 # endif
+
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define RESET "\033[0m"
 
 typedef struct s_player 
 {
@@ -135,5 +140,6 @@ void	free_map(t_game *game);
 
 void	destroy_all(t_game *game);
 
+void	win_message();
 
 #endif

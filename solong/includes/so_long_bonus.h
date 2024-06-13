@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:03:23 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/13 10:23:36 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/13 10:54:12 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@
 #  define KEY_RIGHT	65363
 #  define KEY_UP	65362
 # endif
+
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define RESET "\033[0m"
 
 typedef struct s_player 
 {
@@ -140,5 +144,9 @@ void	free_map(t_game *game);
 //void	animations();
 
 void	print_counter(t_game *game);
+
+void	lose_message();
+
+void	win_message();
 
 #endif

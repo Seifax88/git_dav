@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 09:04:56 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/13 10:09:16 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/13 11:25:55 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ void	init_game(t_game *game)
 	game->window = mlx_new_window(game->mlx, (game->w_length * 64), ((game->w_lines - 1) * 64), "So_Long");
 	init_imgs(&game->sprite, game);
 	find_exit_position(game);
-	init_background(&game->sprite, game);
 	game->player.steps = 0;
 	game->player.points = 0;
+	init_background(&game->sprite, game);
 	mlx_hook(game->window, 17, 0, destroy_win_x, game);
 	mlx_hook(game->window, 2, 1L >> 0, key_pres_hook, game);
 	//mlx_loop_hook(game->window, animations, &game);
