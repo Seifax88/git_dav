@@ -6,11 +6,11 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:47:49 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/13 10:24:44 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/13 10:24:55 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "so_long_bonus.h"
 
 void	print_map_error(char *error, t_game *game)
 {
@@ -54,7 +54,6 @@ void	*ft_empty_line(char **lines, int n)
 	lines = NULL;
 	return (NULL);
 }
-
 
 void	print_dup_error(char **map, t_game *game)
 {

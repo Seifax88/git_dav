@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 09:09:52 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/12 14:43:08 by dgargant         ###   ########.fr       */
+/*   Created: 2024/06/11 10:03:23 by dgargant          #+#    #+#             */
+/*   Updated: 2024/06/13 10:23:36 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include "libft.h"
+# include "ft_printf.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include "../mlx_linux/mlx_int.h"
@@ -51,6 +52,7 @@ typedef struct s_sprite
 	void	*bush;
 	void	*house;
 	void	*egg;
+	void	*chiken;
 }	t_sprite;
 
 
@@ -85,8 +87,6 @@ void	check_map_borders(t_game *game);
 
 void	check_map_content(t_game *game);
 
-void	free_dup_map(char **map);
-
 void	fl_fill(char **map, int y, int x);
 
 void	flood_fill(char **map, t_game *game);
@@ -100,6 +100,8 @@ int	count_letters(char *str, char c);
 void	*ft_empty_line(char **lines, int n);
 
 char	**map_dup(t_game *game);
+
+void	free_dup_map(char **map);
 
 void	parsing_init(t_game *game);
 
@@ -131,9 +133,12 @@ void	set_x_pos(t_game *game, int n);
 
 void	check_exit(t_game *game, char c);
 
-void	free_map(t_game *game);
-
 void	destroy_all(t_game *game);
 
+void	free_map(t_game *game);
+
+//void	animations();
+
+void	print_counter(t_game *game);
 
 #endif

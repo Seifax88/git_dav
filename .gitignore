@@ -3,5 +3,5 @@
 .DS_Store
 *.out
 *.txt
-maps/.ber
+.vscode
 so_long

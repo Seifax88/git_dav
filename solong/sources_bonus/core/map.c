@@ -6,14 +6,15 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:11:40 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/13 10:27:01 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/13 10:28:37 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "so_long_bonus.h"
 
 void	check_map_extension(char **argv)
 {
+	
 	if (ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4], ".ber", 4)
 		|| argv[1][ft_strlen(argv[1]) - 5] == '/'
 		|| strncmp(argv[1], ".ber", 4) == 0)

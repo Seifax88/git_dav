@@ -6,11 +6,11 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 11:12:30 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/07 11:33:29 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/13 10:06:24 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "so_long_bonus.h"
 
 
 int key_pres_hook(int keycode, t_game *game)

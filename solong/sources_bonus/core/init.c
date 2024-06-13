@@ -6,11 +6,11 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 09:04:56 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/13 10:26:08 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/13 10:09:16 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "so_long_bonus.h"
 
 void	init_imgs(t_sprite *sprite, t_game *game)
 {
@@ -22,6 +22,7 @@ void	init_imgs(t_sprite *sprite, t_game *game)
 	sprite->bush = mlx_xpm_file_to_image(game->mlx, "./assets/Bush.xpm", &x, &y);
 	sprite->house = mlx_xpm_file_to_image(game->mlx, "./assets/House.xpm", &x, &y);
 	sprite->egg = mlx_xpm_file_to_image(game->mlx, "./assets/Egg1.xpm", &x, &y);
+	sprite->chiken = mlx_xpm_file_to_image(game->mlx, "./assets/Chiken1.xpm", &x,&y);
 	error_create_img(&game->sprite, game);
 }
 
@@ -29,7 +30,7 @@ void	error_create_img(t_sprite *sprite, t_game *game)
 {
 	if (sprite->egg == NULL || sprite->background == NULL
 		|| sprite->bush == NULL || sprite->cat == NULL
-		|| sprite->house == NULL)
+		|| sprite->chiken == NULL || sprite->house == NULL)
 	{
 		print_map_error("Error loading images", game);
 		destroy_all(game);
@@ -52,6 +53,8 @@ void	put_imgs(t_game *game, t_sprite *sprite, int y, int x)
 		mlx_put_image_to_window(game->mlx, game->window, sprite->house, x * 64, y * 64);
 	if (c == 'C')
 		mlx_put_image_to_window(game->mlx, game->window, sprite->egg, x * 64, y * 64);
+	if (c == 'N')
+		mlx_put_image_to_window(game->mlx, game->window, sprite->chiken, x * 64, y * 64);
 }
 
 void	init_background(t_sprite *sprite, t_game *game)
@@ -70,6 +73,8 @@ void	init_background(t_sprite *sprite, t_game *game)
 		}
 		y++;
 	}
+	mlx_set_font(game->mlx, game->window, "12x24romankana");
+	print_counter(game);
 }
 
 void	init_game(t_game *game)
@@ -81,7 +86,7 @@ void	init_game(t_game *game)
 	mlx_get_screen_size(game->mlx, &x, &y);
 	if (x < (game->w_length * 64) || y < (game->w_lines * 64))
 	{
-		ft_printf("Resolution error, %d x %d", (game->w_length * 64), (game->w_lines * 64));
+		printf("Resolution error, %d x %d", (game->w_length * 64), (game->w_lines * 64));
 		mlx_loop_end(game->mlx);
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);

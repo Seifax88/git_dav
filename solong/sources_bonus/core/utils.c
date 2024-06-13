@@ -6,11 +6,11 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:06:25 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/12 13:13:59 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:19:00 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "so_long_bonus.h"
 
 
 void	find_exit_position(t_game *game)
@@ -82,6 +82,22 @@ void	set_y_pos(t_game *game, int n)
 	game->map->map[y][x] = 'P';
 }
 
+void	print_counter(t_game *game)
+{
+	int	y;
+	int	x;
+	int	steps;
+	char	*str;
+
+	y = game->w_lines - 1;
+	x = 1;
+	steps = game->player.steps;
+	str = ft_itoa(steps);
+	mlx_string_put(game->mlx, game->window, x * 64, y * 64, 0xB500EA ,"Steps: ");
+	mlx_string_put(game->mlx, game->window, (x + 2) * 64, y * 64, 0xB500EA , str);
+	free(str);
+}
+
 void	destroy_all(t_game *game)
 {
 	if (game->sprite.house)
@@ -94,6 +110,8 @@ void	destroy_all(t_game *game)
 		mlx_destroy_image(game->mlx, game->sprite.background);
 	if (game->sprite.cat)
 		mlx_destroy_image(game->mlx, game->sprite.cat);
+	if (game->sprite.chiken)
+		mlx_destroy_image(game->mlx, game->sprite.chiken);
 	mlx_destroy_window(game->mlx, game->window);
 	mlx_loop_end(game->mlx);
 	mlx_destroy_display(game->mlx);

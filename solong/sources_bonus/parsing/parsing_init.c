@@ -6,11 +6,11 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 09:08:01 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/12 14:54:39 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:37:09 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "so_long_bonus.h"
 
 void	parsing_init(t_game *game)
 {
@@ -22,19 +22,6 @@ void	parsing_init(t_game *game)
 	test = map_dup(game);
 	flood_fill(test, game);
 	free_dup_map(test);
-}
-
-void	free_dup_map(char **map)
-{
-	int		y;
-	y = 0;
-	while (map[y] != NULL)
-	{
-		free(map[y]);
-		y++;
-	}
-	free(map);
-	map = NULL;
 }
 
 char	**map_dup(t_game *game)
@@ -57,4 +44,17 @@ char	**map_dup(t_game *game)
 		y++;
 	}
 	return (copy);
+}
+
+void	free_dup_map(char **map)
+{
+	int		y;
+	y = 0;
+	while (map[y] != NULL)
+	{
+		free(map[y]);
+		y++;
+	}
+	free(map);
+	map = NULL;
 }

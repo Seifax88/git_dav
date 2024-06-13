@@ -6,11 +6,11 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 12:50:21 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/12 14:42:21 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:40:38 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "so_long_bonus.h"
 
 //Check if the map is empty or is not valid
 void    check_map_empty(t_game *game)
@@ -26,7 +26,7 @@ void    check_map_empty(t_game *game)
         {
             if (game->map->map[y][x] != '1' && game->map->map[y][x] != '0'
                 && game->map->map[y][x] != 'E' && game->map->map[y][x] != 'P'
-                && game->map->map[y][x] != 'C')
+                && game->map->map[y][x] != 'C' && game->map->map[y][x] != 'N')
                     print_map_error("EMPTY OR NOT VALID MAP \n", game);
 				x++;
         }
@@ -79,11 +79,11 @@ void    check_map_content(t_game *game)
         y++;
     }
     if (player != 1)
-        print_map_error("THE NUMBER OF PLAYERS IS NOT CORRECT \n", game);
+        print_map_error("THE NUMBER OF PLAYERS IS NOT CORRECT", game);
     if (exit != 1)
-        print_map_error("THE NUMBER OF EXITS IS NOT CORRECT\n", game);
+        print_map_error("THE NUMBER OF EXITS IS NOT CORRECT", game);
     if (game->map->items == 0)
-        print_map_error("THE NUMBER OF ITEMS IS NOT DEFINED\n", game);
+        print_map_error("NUMBER OF ITEMS IS NOT DEFINED", game);
 }
 
 //check it has resolution (flood_fill)
@@ -130,7 +130,7 @@ void	flood_fill(char **map, t_game *game)
     while (map && map[y])
     {
         if ((count_letters(map[y], 'E') == 1) || (count_letters(map[y], 'C') == 1))
-            print_dup_error(map, game);
+			print_dup_error(map, game);
         y++;
     }
 }

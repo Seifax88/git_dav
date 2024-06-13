@@ -6,11 +6,11 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 09:40:34 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/13 10:26:41 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/13 10:28:26 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#include "so_long_bonus.h"
 
 void	check_exit(t_game *game, char c)
 {
@@ -24,11 +24,23 @@ void	check_exit(t_game *game, char c)
 	}
 }
 
+void	check_enemy(t_game *game,char c)
+{
+	if (c == 'N')
+	{
+		game->player.steps += 1;
+		ft_printf("\nSteps: %d\n", game->player.steps);
+		destroy_all(game);
+		exit(1);
+	}
+}
+
 int	player_movement(t_game *game, int x, int y)
 {
 	char	c;
 
 	c = game->map->map[y][x];
+	check_enemy(game, c);
 	if (c == '1')
 		return (0);
 	if (c == 'C')
