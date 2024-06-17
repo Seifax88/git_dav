@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:03:23 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/13 10:54:12 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/17 12:51:25 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_sprite
 	void	*house;
 	void	*egg;
 	void	*chiken;
+	void	*chiken2;
 }	t_sprite;
 
 
@@ -148,5 +149,9 @@ void	print_counter(t_game *game);
 void	lose_message();
 
 void	win_message();
+
+int	animations(t_game *game);
+
+void	put_animation(t_sprite *sprite, t_game *game, int counter);
 
 #endif

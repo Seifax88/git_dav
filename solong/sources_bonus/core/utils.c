@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:06:25 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/12 14:19:00 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/17 10:26:02 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ void	destroy_all(t_game *game)
 		mlx_destroy_image(game->mlx, game->sprite.cat);
 	if (game->sprite.chiken)
 		mlx_destroy_image(game->mlx, game->sprite.chiken);
+	if (game->sprite.chiken2)
+		mlx_destroy_image(game->mlx, game->sprite.chiken2);
 	mlx_destroy_window(game->mlx, game->window);
 	mlx_loop_end(game->mlx);
 	mlx_destroy_display(game->mlx);

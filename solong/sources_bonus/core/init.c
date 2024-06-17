@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 09:04:56 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/13 11:25:55 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/17 14:48:16 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_imgs(t_sprite *sprite, t_game *game)
 	sprite->house = mlx_xpm_file_to_image(game->mlx, "./assets/House.xpm", &x, &y);
 	sprite->egg = mlx_xpm_file_to_image(game->mlx, "./assets/Egg1.xpm", &x, &y);
 	sprite->chiken = mlx_xpm_file_to_image(game->mlx, "./assets/Chiken1.xpm", &x,&y);
+	sprite->chiken2 = mlx_xpm_file_to_image(game->mlx, "./assets/Chiken2.xpm", &x,&y);
 	error_create_img(&game->sprite, game);
 }
 
@@ -30,7 +31,8 @@ void	error_create_img(t_sprite *sprite, t_game *game)
 {
 	if (sprite->egg == NULL || sprite->background == NULL
 		|| sprite->bush == NULL || sprite->cat == NULL
-		|| sprite->chiken == NULL || sprite->house == NULL)
+		|| sprite->chiken == NULL || sprite->chiken2 == NULL
+		|| sprite->house == NULL)
 	{
 		print_map_error("Error loading images", game);
 		destroy_all(game);
@@ -86,7 +88,7 @@ void	init_game(t_game *game)
 	mlx_get_screen_size(game->mlx, &x, &y);
 	if (x < (game->w_length * 64) || y < (game->w_lines * 64))
 	{
-		printf("Resolution error, %d x %d", (game->w_length * 64), (game->w_lines * 64));
+		ft_printf("Resolution error, %d x %d", (game->w_length * 64), (game->w_lines * 64));
 		mlx_loop_end(game->mlx);
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
@@ -101,6 +103,6 @@ void	init_game(t_game *game)
 	init_background(&game->sprite, game);
 	mlx_hook(game->window, 17, 0, destroy_win_x, game);
 	mlx_hook(game->window, 2, 1L >> 0, key_pres_hook, game);
-	//mlx_loop_hook(game->window, animations, &game);
+	mlx_loop_hook(game->mlx, animations, game);
 	mlx_loop(game->mlx);
 }
