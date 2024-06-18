@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:06:25 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/12 13:13:59 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:02:23 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	set_x_pos(t_game *game, int n)
 	x = game->player.x_pos + (n);
 	y = game->player.y_pos;
 	game->map->map[y][x] = 'P';
+	if (game->player.points == game->map->items)
+		game->map->map[game->map->y_exit][game->map->x_exit] = 'E';
 }
 
 void	set_y_pos(t_game *game, int n)
@@ -80,6 +82,8 @@ void	set_y_pos(t_game *game, int n)
 	x = game->player.x_pos;
 	y = game->player.y_pos + (n);
 	game->map->map[y][x] = 'P';
+	if (game->player.points == game->map->items)
+		game->map->map[game->map->y_exit][game->map->x_exit] = 'E';
 }
 
 void	destroy_all(t_game *game)

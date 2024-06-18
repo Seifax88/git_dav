@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:06:25 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/17 10:26:02 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:30:32 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void	set_x_pos(t_game *game, int n)
 	x = game->player.x_pos + (n);
 	y = game->player.y_pos;
 	game->map->map[y][x] = 'P';
+	if (game->player.points == game->map->items)
+		game->map->map[game->map->y_exit][game->map->x_exit] = 'E';
 }
 
 void	set_y_pos(t_game *game, int n)
@@ -80,6 +82,8 @@ void	set_y_pos(t_game *game, int n)
 	x = game->player.x_pos;
 	y = game->player.y_pos + (n);
 	game->map->map[y][x] = 'P';
+	if (game->player.points == game->map->items)
+		game->map->map[game->map->y_exit][game->map->x_exit] = 'E';
 }
 
 void	print_counter(t_game *game)
@@ -110,6 +114,8 @@ void	destroy_all(t_game *game)
 		mlx_destroy_image(game->mlx, game->sprite.background);
 	if (game->sprite.cat)
 		mlx_destroy_image(game->mlx, game->sprite.cat);
+	if (game->sprite.cat2)
+		mlx_destroy_image(game->mlx, game->sprite.cat2);
 	if (game->sprite.chiken)
 		mlx_destroy_image(game->mlx, game->sprite.chiken);
 	if (game->sprite.chiken2)

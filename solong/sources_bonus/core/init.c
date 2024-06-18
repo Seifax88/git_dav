@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 09:04:56 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/17 14:48:16 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:42:15 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	init_imgs(t_sprite *sprite, t_game *game)
 	int x;
 	int y;
 	
-	sprite->cat = mlx_xpm_file_to_image(game->mlx, "./assets/Cat1.xpm", &x, &y);
+	sprite->cat = mlx_xpm_file_to_image(game->mlx, "./assets/Cat.xpm", &x, &y);
+	sprite->cat2 = mlx_xpm_file_to_image(game->mlx, "./assets/Cat2.xpm", &x, &y);
 	sprite->background = mlx_xpm_file_to_image(game->mlx, "./assets/Grass.xpm", &x, &y);
 	sprite->bush = mlx_xpm_file_to_image(game->mlx, "./assets/Bush.xpm", &x, &y);
 	sprite->house = mlx_xpm_file_to_image(game->mlx, "./assets/House.xpm", &x, &y);
@@ -103,6 +104,7 @@ void	init_game(t_game *game)
 	init_background(&game->sprite, game);
 	mlx_hook(game->window, 17, 0, destroy_win_x, game);
 	mlx_hook(game->window, 2, 1L >> 0, key_pres_hook, game);
-	mlx_loop_hook(game->mlx, animations, game);
+	mlx_loop_hook(game->mlx, chiken_animations, game);
+	//mlx_loop_hook(game->mlx, player_animations, game);
 	mlx_loop(game->mlx);
 }

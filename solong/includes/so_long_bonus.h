@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:03:23 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/17 12:51:25 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/18 12:43:38 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_map
 typedef struct s_sprite
 {
 	void	*cat;
+	void	*cat2;
 	void	*background;
 	void	*bush;
 	void	*house;
@@ -138,6 +139,8 @@ void	set_x_pos(t_game *game, int n);
 
 void	check_exit(t_game *game, char c);
 
+int	check_egg(t_game *game, char c);
+
 void	destroy_all(t_game *game);
 
 void	free_map(t_game *game);
@@ -150,8 +153,12 @@ void	lose_message();
 
 void	win_message();
 
-int	animations(t_game *game);
+int	chiken_animations(t_game *game);
 
-void	put_animation(t_sprite *sprite, t_game *game, int counter);
+void	put_chiken_animation(t_sprite *sprite, t_game *game, int counter);
+
+void	player_animations(t_game *game);
+
+void	put_player_animation(t_sprite *sprite, t_game *game, int counter);
 
 #endif
