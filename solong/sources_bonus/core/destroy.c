@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 10:38:09 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/20 11:07:03 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:43:19 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	destroy_all(t_game *game)
 
 void	resolution_error(t_game *game)
 {
-	ft_printf("Resolution error, %d x %d", (game->w_length * 64),
-		(game->w_lines * 64));
+	ft_printf(RED "\n Resolution error, %d x %d \n" RESET,
+		(game->w_length * 64), (game->w_lines * 64));
 	mlx_loop_end(game->mlx);
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);

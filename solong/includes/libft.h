@@ -6,13 +6,12 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:09:53 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/07 11:14:54 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:16:29 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -38,7 +37,7 @@ char	*ft_strjoin(const char *s1, const char *s2);
 
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 
-int	ft_strncmp(char *s1, char *s2, size_t n);
+int		ft_strncmp(char *s1, char *s2, size_t n);
 
 char	*ft_itoa(int n);
 

@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 12:50:21 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/20 12:38:26 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:11:35 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	check_map_content(t_game *game)
 	int	y;
 	int	player;
 	int	exit;
-    
+
 	y = 0;
 	player = 0;
 	exit = 0;
@@ -76,7 +76,7 @@ void	check_map_content(t_game *game)
 		exit += count_ltrs(game->map->map[y], 'E');
 		game->map->items += count_ltrs(game->map->map[y], 'C');
 		y++;
-    }
+	}
 	if (player != 1)
 		print_map_error("THE NUMBER OF PLAYERS IS NOT CORRECT", game);
 	if (exit != 1)
@@ -88,7 +88,7 @@ void	check_map_content(t_game *game)
 //check it has resolution (flood_fill)
 void	fl_fill(char **map, int y, int x)
 {
-	map[y][x] = 'P'; 
+	map[y][x] = 'P';
 	if (map[y][x + 1] == '0' || map[y][x + 1] == 'C'
 		|| map[y][x + 1] == 'E')
 		fl_fill(map, y, x + 1);
@@ -100,11 +100,10 @@ void	fl_fill(char **map, int y, int x)
 		fl_fill(map, y + 1, x);
 	if (map[y - 1][x] == '0' || map[y - 1][x] == 'C'
 		|| map[y - 1][x] == 'E')
-		fl_fill(map, y - 1, x);	
+		fl_fill(map, y - 1, x);
 }
 
-    //find the position of player
-        //with count_leters check in map if 'C' != 0 or 'E'
+//find the position of player && with count_leters check in map
 void	flood_fill(char **map, t_game *game)
 {
 	int	y;
@@ -114,7 +113,7 @@ void	flood_fill(char **map, t_game *game)
 	while (map[y] != NULL)
 	{
 		x = 0;
-		while(map[y][x] != '\0')
+		while (map[y][x] != '\0')
 		{
 			if (map[y][x] == 'P')
 				break ;

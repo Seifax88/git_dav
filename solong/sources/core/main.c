@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:10:24 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/19 10:20:27 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:37:49 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ int	main(int argc, char **argv)
 	t_game	game;
 
 	if (argc < 1)
+	{
+		ft_printf(RED "\n Error, please use a valid map \n" RESET);
 		return (0);
+	}
 	create_map(&game, argv);
 	parsing_init(&game);
 	init_game(&game);

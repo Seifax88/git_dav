@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:09:52 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/19 12:31:00 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:19:49 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,13 @@
 # define GREEN "\033[0;32m"
 # define RESET "\033[0m"
 
-typedef struct s_player 
+typedef struct s_player
 {
 	int	points;
 	int	steps;
 	int	y_pos;
 	int	x_pos;
 }	t_player;
-
 
 typedef struct s_map
 {
@@ -62,23 +61,22 @@ typedef struct s_sprite
 	void	*egg;
 }	t_sprite;
 
-
 typedef struct s_game
 {
-	int		w_length;
-	int		w_lines;
-	void	*mlx;
-	void	*window;
-	t_map	*map;
+	int			w_length;
+	int			w_lines;
+	void		*mlx;
+	void		*window;
+	t_map		*map;
 	t_sprite	sprite;
 	t_player	player;
 }	t_game;
 
-int	main(int argc, char **argv);
+int		main(int argc, char **argv);
 
 void	check_map_extension(char **argv, t_game *game);
 
-int	height_map(int fd);
+int		height_map(int fd);
 
 void	fill_map(int fd, t_game *game);
 
@@ -104,7 +102,7 @@ void	print_map_error(char *error, t_game *game);
 
 void	print_dup_error(char **map, t_game *game);
 
-int	count_ltrs(char *str, char c);
+int		count_ltrs(char *str, char c);
 
 void	*ft_empty_line(char **lines, int n);
 
@@ -122,15 +120,15 @@ void	init_background(t_sprite *sprite, t_game *game);
 
 void	put_imgs(t_game *game, t_sprite *sprite, int y, int x);
 
-int key_pres_hook(int keycode, t_game *game);
+int		key_pres_hook(int keycode, t_game *game);
 
-int	destroy_win_x(t_game *game);
+int		destroy_win_x(t_game *game);
 
 void	find_exit_position(t_game *game);
 
 void	find_player_position(t_game *game);
 
-int	player_movement(t_game *game, int x, int y);
+int		player_movement(t_game *game, int x, int y);
 
 void	set_mv_player(int keycode, t_game *game);
 
@@ -140,7 +138,7 @@ void	set_x_pos(t_game *game, int n);
 
 void	check_exit(t_game *game, char c);
 
-int	check_egg(t_game *game, char c);
+int		check_egg(t_game *game, char c);
 
 void	free_map(t_game *game);
 
