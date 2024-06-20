@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 12:50:21 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/18 10:18:46 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/19 12:33:27 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void    check_map_content(t_game *game)
     game->map->items = 0;
     while (game->map->map && game->map->map[y])
     {
-        player += count_letters(game->map->map[y], 'P');
-        exit += count_letters(game->map->map[y], 'E');
-        game->map->items += count_letters(game->map->map[y], 'C');
+        player += count_ltrs(game->map->map[y], 'P');
+        exit += count_ltrs(game->map->map[y], 'E');
+        game->map->items += count_ltrs(game->map->map[y], 'C');
         y++;
     }
     if (player != 1)
@@ -129,7 +129,7 @@ void	flood_fill(char **map, t_game *game)
     y = 0;
     while (map && map[y])
     {
-        if ((count_letters(map[y], 'E') == 1) || (count_letters(map[y], 'C') == 1))
+        if ((count_ltrs(map[y], 'E') == 1) || (count_ltrs(map[y], 'C') == 1))
 			print_dup_error(map, game);
         y++;
     }

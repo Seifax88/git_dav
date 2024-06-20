@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:03:23 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/18 12:43:38 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/20 10:42:19 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 #  define KEY_LEFT	65361
 #  define KEY_RIGHT	65363
 #  define KEY_UP	65362
+#  define W_KEY		119
+#  define A_KEY		97
+#  define S_KEY		115
+#  define D_KEY		100
 # endif
 
 # define RED "\033[0;31m"
@@ -75,7 +79,7 @@ typedef struct s_game
 
 int	main(int argc, char **argv);
 
-void	check_map_extension(char **argv);
+void	check_map_extension(char **argv, t_game *game);
 
 int	height_map(int fd);
 
@@ -101,7 +105,7 @@ void	print_map_error(char *error, t_game *game);
 
 void	print_dup_error(char **map, t_game *game);
 
-int	count_letters(char *str, char c);
+int	count_ltrs(char *str, char c);
 
 void	*ft_empty_line(char **lines, int n);
 
@@ -112,6 +116,8 @@ void	free_dup_map(char **map);
 void	parsing_init(t_game *game);
 
 void	init_game(t_game *game);
+
+void	resolution_error(t_game *game);
 
 void	init_imgs(t_sprite *sprite, t_game *game);
 
@@ -149,16 +155,20 @@ void	free_map(t_game *game);
 
 void	print_counter(t_game *game);
 
-void	lose_message();
+void	lose_message(void);
 
-void	win_message();
+void	win_message(void);
 
 int	chiken_animations(t_game *game);
 
-void	put_chiken_animation(t_sprite *sprite, t_game *game, int counter);
+void	put_chiken_animation(t_game *game, int counter);
+
+void	chiken_iter(t_game *game, int counter, int x, int y);
 
 void	player_animations(t_game *game);
 
-void	put_player_animation(t_sprite *sprite, t_game *game, int counter);
+void	put_player_animation(t_game *game, int counter);
+
+void	player_iter(t_game *game, int counter, int x, int y);
 
 #endif

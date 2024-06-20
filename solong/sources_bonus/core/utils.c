@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:06:25 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/18 12:30:32 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/20 10:38:38 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,34 +97,7 @@ void	print_counter(t_game *game)
 	x = 1;
 	steps = game->player.steps;
 	str = ft_itoa(steps);
-	mlx_string_put(game->mlx, game->window, x * 64, y * 64, 0xB500EA ,"Steps: ");
-	mlx_string_put(game->mlx, game->window, (x + 2) * 64, y * 64, 0xB500EA , str);
+	mlx_string_put(game->mlx, game->window, x * 64, y * 64, 0x000000 ,"Steps: ");
+	mlx_string_put(game->mlx, game->window, (x + 2) * 64, y * 64, 0x000000 , str);
 	free(str);
 }
-
-void	destroy_all(t_game *game)
-{
-	if (game->sprite.house)
-		mlx_destroy_image(game->mlx, game->sprite.house);
-	if (game->sprite.bush)
-		mlx_destroy_image(game->mlx, game->sprite.bush);
-	if (game->sprite.egg)
-		mlx_destroy_image(game->mlx, game->sprite.egg);
-	if (game->sprite.background)
-		mlx_destroy_image(game->mlx, game->sprite.background);
-	if (game->sprite.cat)
-		mlx_destroy_image(game->mlx, game->sprite.cat);
-	if (game->sprite.cat2)
-		mlx_destroy_image(game->mlx, game->sprite.cat2);
-	if (game->sprite.chiken)
-		mlx_destroy_image(game->mlx, game->sprite.chiken);
-	if (game->sprite.chiken2)
-		mlx_destroy_image(game->mlx, game->sprite.chiken2);
-	mlx_destroy_window(game->mlx, game->window);
-	mlx_loop_end(game->mlx);
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
-	game->mlx = NULL;
-	free_map(game);
-}
-

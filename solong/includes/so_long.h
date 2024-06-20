@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 09:09:52 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/13 11:12:33 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/19 12:31:00 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 #  define KEY_LEFT	65361
 #  define KEY_RIGHT	65363
 #  define KEY_UP	65362
+#  define W_KEY		119
+#  define A_KEY		97
+#  define S_KEY		115
+#  define D_KEY		100
 # endif
 
 # define RED "\033[0;31m"
@@ -72,7 +76,7 @@ typedef struct s_game
 
 int	main(int argc, char **argv);
 
-void	check_map_extension(char **argv);
+void	check_map_extension(char **argv, t_game *game);
 
 int	height_map(int fd);
 
@@ -100,7 +104,7 @@ void	print_map_error(char *error, t_game *game);
 
 void	print_dup_error(char **map, t_game *game);
 
-int	count_letters(char *str, char c);
+int	count_ltrs(char *str, char c);
 
 void	*ft_empty_line(char **lines, int n);
 
@@ -136,10 +140,12 @@ void	set_x_pos(t_game *game, int n);
 
 void	check_exit(t_game *game, char c);
 
+int	check_egg(t_game *game, char c);
+
 void	free_map(t_game *game);
 
 void	destroy_all(t_game *game);
 
-void	win_message();
+void	win_message(void);
 
 #endif

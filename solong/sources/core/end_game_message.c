@@ -6,13 +6,13 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 10:37:11 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/13 11:10:45 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/19 10:21:57 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	win_message()
+void	win_message(void)
 {
 	ft_printf(GREEN);
 	ft_printf("██╗   ██╗ ██████╗ ██╗   ██╗    ██╗    ██╗██╗███╗   ██╗\n");

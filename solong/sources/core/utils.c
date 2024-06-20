@@ -6,19 +6,18 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 11:06:25 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/18 12:02:23 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/19 12:13:11 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
-
 
 void	find_exit_position(t_game *game)
 {
 	int		y;
 	int		x;
 	char	c;
-	
+
 	y = 0;
 	while (game->map->map[y] != NULL)
 	{
@@ -27,11 +26,11 @@ void	find_exit_position(t_game *game)
 		{
 			c = game->map->map[y][x];
 			if (c == 'E')
-				{
-					game->map->y_exit = y;
-					game->map->x_exit = x;
-					game->map->map[y][x] = '0';
-				}
+			{
+				game->map->y_exit = y;
+				game->map->x_exit = x;
+				game->map->map[y][x] = '0';
+			}
 			x++;
 		}
 		y++;
@@ -43,7 +42,7 @@ void	find_player_position(t_game *game)
 	int		y;
 	int		x;
 	char	c;
-	
+
 	y = 0;
 	while (game->map->map[y] != NULL)
 	{
@@ -52,10 +51,10 @@ void	find_player_position(t_game *game)
 		{
 			c = game->map->map[y][x];
 			if (c == 'P')
-				{
-					game->player.y_pos = y;
-					game->player.x_pos = x;
-				}
+			{
+				game->player.y_pos = y;
+				game->player.x_pos = x;
+			}
 			x++;
 		}
 		y++;
@@ -65,7 +64,7 @@ void	find_player_position(t_game *game)
 void	set_x_pos(t_game *game, int n)
 {
 	int	x;
-	int y;
+	int	y;
 
 	x = game->player.x_pos + (n);
 	y = game->player.y_pos;
@@ -76,8 +75,8 @@ void	set_x_pos(t_game *game, int n)
 
 void	set_y_pos(t_game *game, int n)
 {
-		int	x;
-	int y;
+	int	x;
+	int	y;
 
 	x = game->player.x_pos;
 	y = game->player.y_pos + (n);
@@ -105,4 +104,3 @@ void	destroy_all(t_game *game)
 	game->mlx = NULL;
 	free_map(game);
 }
-

@@ -6,20 +6,22 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:11:40 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/13 10:28:37 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/19 11:09:01 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	check_map_extension(char **argv)
+void	check_map_extension(char **argv, t_game *game)
 {
 	
 	if (ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4], ".ber", 4)
 		|| argv[1][ft_strlen(argv[1]) - 5] == '/'
 		|| strncmp(argv[1], ".ber", 4) == 0)
 	{
-		ft_printf("Error. Invalid map_path");
+		ft_printf(RED "\n Error. Invalid map_path \n" RESET);
+		free(game->map);
+		game->map = NULL;
 		exit(1);
 	}
 }
@@ -105,8 +107,12 @@ void	create_map(t_game *game, char **argv)
     game->map = map;
 	fd = open(argv[1], O_RDONLY);
 	if(fd < 0)
+	{
+		free(map);
+		map = NULL;
 		exit(1);
-	check_map_extension(argv);
+	}
+	check_map_extension(argv, game);
 	game->w_lines = (height_map(fd));
 	close(fd);
 	fd =  0;

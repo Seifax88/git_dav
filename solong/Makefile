@@ -35,7 +35,7 @@ SRCS :=	 $(addprefix sources/, \
 
 SRCS_BONUS :=	 $(addprefix sources_bonus/, \
 	core/main.c	core/map.c	core/init.c	core/hook.c	core/movement.c	core/utils.c	core/animations.c\
-	core/end_game_message.c\
+	core/end_game_message.c	core/anim_utils.c	core/destroy.c\
 	parsing/parsing_map.c	parsing/parsing_utils.c parsing/parsing_init.c)
 
 SRCS_LIB := $(addprefix ./libft/, \

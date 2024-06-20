@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:47:49 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/13 10:24:55 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/19 12:33:00 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	print_map_error(char *error, t_game *game)
 {
-	ft_printf("\n ERROR, %s", error);
+	ft_printf(RED "\n ERROR, %s \n" RESET, error);
 	free_map(game);
 	exit(1);
 }
 
 
 
-int	count_letters(char *str, char c)
+int	count_ltrs(char *str, char c)
 {
 	int	num_letters;
 	int	i;
@@ -57,7 +57,7 @@ void	*ft_empty_line(char **lines, int n)
 
 void	print_dup_error(char **map, t_game *game)
 {
-	ft_printf("\n ERROR, WRONG MAP");
+	ft_printf(RED "\n ERROR, WRONG MAP \n" RESET);
 	free_map(game);
 	free_dup_map(map);
 	exit(1);
