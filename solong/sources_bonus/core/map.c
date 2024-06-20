@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:11:40 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/19 11:09:01 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/20 12:13:23 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	check_map_extension(char **argv, t_game *game)
 {
-	
 	if (ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4], ".ber", 4)
 		|| argv[1][ft_strlen(argv[1]) - 5] == '/'
 		|| strncmp(argv[1], ".ber", 4) == 0)
@@ -28,23 +27,23 @@ void	check_map_extension(char **argv, t_game *game)
 
 //count height
 int	height_map(int fd)
- {
+{
 	char	*line;
- 	int		linecount;
+	int		linecount;
 
- 	linecount = 1;
- 	while (1)
- 	{
- 		line = get_next_line(fd);
- 		if (line == NULL)
- 			break ;
- 		free(line);
- 		line = NULL;
- 		linecount++;
- 	}
- 	return (linecount);
- }
- 
+	linecount = 1;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
+		free(line);
+		line = NULL;
+		linecount++;
+	}
+	return (linecount);
+}
+
 //map in s_game
 void	fill_map(int fd, t_game *game)
 {
@@ -52,7 +51,7 @@ void	fill_map(int fd, t_game *game)
 
 	i = 0;
 	game->map->map = malloc((game->w_lines) * sizeof(char *));
-	while(1)
+	while (1)
 	{
 		game->map->map[i] = get_next_line(fd);
 		if (game->map->map[i] == NULL)
@@ -63,20 +62,12 @@ void	fill_map(int fd, t_game *game)
 	}
 }
 
-
-/*void	print_map(t_game *game)
-{
-	printf(" \nMAPA\n");
-	for (int i = 0; game->map->map[i] != NULL; i++)
-		printf("%d %s", i,game->map->map[i]);
-}*/
-
 void	count_items(t_game *game)
 {
 	int		y;
 	int		x;
 	char	c;
-	
+
 	y = 0;
 	game->map->items = 0;
 	while (game->map->map[y] != NULL)
@@ -86,9 +77,9 @@ void	count_items(t_game *game)
 		{
 			c = game->map->map[y][x];
 			if (c == 'C')
-				{
-					game->map->items += 1 ;
-				}
+			{
+				game->map->items += 1 ;
+			}
 			x++;
 		}
 		y++;
@@ -98,15 +89,15 @@ void	count_items(t_game *game)
 //call functions
 void	create_map(t_game *game, char **argv)
 {
-	int fd;
-	t_map *map;
+	int		fd;
+	t_map	*map;
 
-    map = malloc(sizeof(t_map));
-    if (!map) 
-        exit(1);
-    game->map = map;
+	map = malloc(sizeof(t_map));
+	if (!map)
+		exit(1);
+	game->map = map;
 	fd = open(argv[1], O_RDONLY);
-	if(fd < 0)
+	if (fd < 0)
 	{
 		free(map);
 		map = NULL;
@@ -115,11 +106,9 @@ void	create_map(t_game *game, char **argv)
 	check_map_extension(argv, game);
 	game->w_lines = (height_map(fd));
 	close(fd);
-	fd =  0;
-	fd = open(argv[1], O_RDONLY); 
+	fd = 0;
+	fd = open(argv[1], O_RDONLY);
 	fill_map(fd, game);
 	game->w_length = (int)strlen_no_tab(game->map->map[0]);
 	count_items(game);
-	//print_map(game);
-	//printf(" \n lineas: %d \n Columnas: %d\n", game->w_lines, game->w_length);
 }
