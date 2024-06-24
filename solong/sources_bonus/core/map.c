@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:11:40 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/20 14:35:46 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/24 14:22:11 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_map_extension(char **argv, t_game *game)
 {
 	if (ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4], ".ber", 4)
 		|| argv[1][ft_strlen(argv[1]) - 5] == '/'
-		|| strncmp(argv[1], ".ber", 4) == 0)
+		|| ft_strncmp(argv[1], ".ber", 4) == 0)
 	{
 		ft_printf(RED "\n Error. Invalid map_path \n" RESET);
 		free(game->map);
