@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 10:03:23 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/20 14:21:43 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/27 11:49:59 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,8 +148,6 @@ int		check_egg(t_game *game, char c);
 void	destroy_all(t_game *game);
 
 void	free_map(t_game *game);
-
-//void	animations();
 
 void	print_counter(t_game *game);
 
