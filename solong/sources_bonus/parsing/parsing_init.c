@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 09:08:01 by dgargant          #+#    #+#             */
-/*   Updated: 2024/06/20 12:24:00 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/27 09:40:59 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	parsing_init(t_game *game)
 {
 	char	**test;
 
+	if ((game->w_length >= 300) && (game->w_lines >= 300))
+		print_map_error("The map is too big", game);
 	check_map_empty(game);
 	check_map_borders(game);
 	check_map_content(game);
