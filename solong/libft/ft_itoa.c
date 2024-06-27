@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 09:38:16 by dgargant          #+#    #+#             */
-/*   Updated: 2024/02/19 14:45:21 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/27 12:07:38 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,23 +65,3 @@ char	*ft_itoa(int n)
 	str = ft_fill_array(str, number, len);
 	return (str);
 }
-
-/* 
-#include <stdio.h>
-int main() {
-	int num = 12345;
-	char* str = ft_itoa(num);
-	printf("The string representation of %d is %s\n", num, str);
-
-	num = -2147483648;
-	str = ft_itoa(num);
-	printf("The string representation of %d is %s\n", num, str);
-
-	num = 0;
-	str = ft_itoa(num);
-	printf("The string representation of %d is %s\n", num, str);
-
-	free(str);
-
-	return 0;
-} */
