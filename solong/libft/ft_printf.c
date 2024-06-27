@@ -6,7 +6,7 @@
 /*   By: dgargant <dgargant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 09:21:07 by dgargant          #+#    #+#             */
-/*   Updated: 2024/03/15 12:58:17 by dgargant         ###   ########.fr       */
+/*   Updated: 2024/06/27 12:06:52 by dgargant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,34 +66,3 @@ int	ft_printf(char const *str, ...)
 	va_end(args);
 	return (result);
 }
-
-/*#include <stdio.h>
-
-int main()
-{
-	char *str = "hola mundo";
-	//int i;
-	int w;
-	int w2;
-
-	//i = 20;
-	w = 0;
-	w2 = 0;
-	ft_printf("-PRUEBAS DE FT_PRINTF-\n");
-	w += ft_printf(" String: %s\n Caracteres: %c\n", str, 'b');
-	w += ft_printf(" Decimales :%d , %i", 25, 25);
-	w += ft_printf("\n Hexadecimales: %x %X\n ", 42, 42);
-	w += ft_printf("Adress del puntero: %p", str);
-	//w += ft_printf("%s", "hola %s mundo");
-	printf("\n Numero devuelto por ft_printf: %i \n \n", w);
-
-
-	printf("-PRUEBAS DE PRINTF-\n");
-	w2 += printf(" String: %s\n Caracteres: %c\n", str, 'b');
-	w2 += printf(" Decimales :%d , %i", 25, 25);
-	w2 += printf("\n Hexadecimales: %x %X\n ", 42, 42);
-	w2 += printf("Adress del puntero: %p", str);
-	//w2 += printf("%s", "hola %s mundo");
-	printf("\n Numero devuelto por printf: %i \n", w2);
-	return (0);
-}*/
